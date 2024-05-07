@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un utilisateur</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Ajouter un utilisateur</h2>
+        <form (submit)="addUser($event)">
+            <div class="input-box">
+                <input type="text" placeholder="Saisir un nom" [(ngModel)]="newUser.name" name="username" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Saisir un email" [(ngModel)]="newUser.email" name="email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Saisir Mot de passe" [(ngModel)]="newUser.password" name="password" required>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Saisir la societe" [(ngModel)]="newUser.societe" name="societe" required>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Ajouter" style="color:white">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

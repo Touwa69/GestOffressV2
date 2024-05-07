@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <body>
+
+
+  <div class="row">
+  <div class="col-lg-12">
+  <div class="main-box clearfix">
+  <div class="table-responsive">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+                          
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-primary">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </span> &nbsp;
+                          <a href="/addUser"><button class="sort btn btn-primary" data-sort="name">
+                            Add User
+                        </button>
+                    </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  <table class="table user-list">
+  <thead>
+  <tr>
+  <th><span>Nom</span></th>
+  <th><span>Créé le</span></th>
+  <th><span>Email</span></th>
+  <th>&nbsp;</th>
+  </tr>
+  </thead>
+  <tbody  *ngFor="let user of users">
+  <tr>
+  <td>
+  <img src="https://gravatar.com/avatar/ff3265b13420b9d301d0005ef494385a?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" class="pull-left photo" alt>
+  <a href="#" class="user-link">{{user.name}} </a>
+  <span class="user-subhead" class="label label-default" >{{ getRoleNames(user) }}</span>
+  </td>
+  <td>
+    {{user.creationDate | date:'dd/MM/yyyy - HH:mm:ss'}} 
+  </td>
+  
+  <td>
+  <a href="#"><span class="__cf_email__" data-cfemail="b1dcd8ddd0f1dac4dfd8c29fd2dedc">{{user.email}} </span></a>
+  </td>
+  <td style="width: 20%;">
+  <a class="table-link" [routerLink]="['/profile',user.id]">
+  <span class="fa-stack">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+  </span>
+  </a>
+  <a class="table-link" [routerLink]="['/updateUser',user.id]">
+  <span class="fa-stack">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+  </span>
+  </a>
+  <a class="table-link danger" (click)="supprimerUser(user.id)">
+  <span class="fa-stack">
+  <i class="fa fa-square fa-stack-2x"></i>
+  <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+  </span>
+  </a>
+  </td>
+  </tr>
+ 
+  </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    
+  </script>
+  </body>
+  </html>

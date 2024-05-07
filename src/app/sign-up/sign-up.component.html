@@ -1,0 +1,35 @@
+    <div class="login-page">
+        <div class="form">
+
+    <form class="login-form" (ngSubmit)="onSubmit()">
+        <!-- <div class="col-sm-2 col-md-2 col-lg-2">
+        <label >ID User</label>
+        <input type="number" [(ngModel)]="newUser.idUser"
+        name="idUser" class="form-control">
+        </div> -->
+
+        <input type="text" placeholder="Username" [(ngModel)]= "newUser.name" name="username" >
+        <input type="password" placeholder="Password" [(ngModel)]= "newUser.password" name="password">
+        <input type="password" placeholder="Please confirm your password"  name="Confirmingpassword">
+        
+        <input type="email" placeholder="Email" [(ngModel)]= "newUser.email" name="email">
+
+        <input type="text" placeholder="Societe" [(ngModel)]= "newUser.societe" name="societe">
+        <!-- <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >Roles</label>
+        <input type="text" [(ngModel)]= "newUser.roles"
+        name="roles" class="form-control">
+        </div> -->
+        <div [hidden]="captcha">
+        
+        <re-captcha (resolved)="resolved($event!)" siteKey="6LcL08UpAAAAACqIwpE_30W9BzvlXvlc0QJbyX89"></re-captcha>
+        </div>
+        <div [hidden]="!captcha">
+            <button type="submit"  class="btn btn-success">Sign-Up</button>
+        </div>
+        <p class="signup"><a href="/login">Already have an account?</a></p>
+        </form>
+
+
+    </div>
+</div>

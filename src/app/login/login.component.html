@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Page</title>
+</head>
+
+<body>
+  <div class="login-page">
+    <div class="form">
+      <div class="alert alert-danger" *ngIf="err==1">
+        <strong>login ou mot de passe erronés..</strong>
+    </div>
+      <form class="login-form">
+        <input type="text" placeholder="Username" name="username" [(ngModel)]="user.email"/>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password"/>
+        <button type="button" (click)="onLoggedin()">Login</button>
+        <p class="signup"><a href="/signUp">Don't have an account?</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
