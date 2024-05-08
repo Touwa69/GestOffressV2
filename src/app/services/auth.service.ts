@@ -16,7 +16,7 @@ export class AuthService {
   public loggedUser!:string;
 
   public isloggedIn: Boolean = false;
-  public userRole!:string[];
+  public roles!:string[];
 
   constructor(private router : Router, private http : HttpClient) { }
 
@@ -40,8 +40,8 @@ export class AuthService {
      if (this.token == undefined)
      return;
     const decodedToken = this.helper.decodeToken(this.token);
-    this.userRole = decodedToken.userRole;
-    console.log("userRole "+this.userRole);
+    this.roles = decodedToken.roles;
+    console.log("userRole "+this.roles);
     this.loggedUser = decodedToken.sub;
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
 
   logout() {
     this.loggedUser = undefined!;
-    this.userRole = undefined!;
+    this.roles = undefined!;
     this.token= undefined!;
     this.isloggedIn = false;
     localStorage.removeItem('jwt');
@@ -68,20 +68,20 @@ export class AuthService {
 }
 
 isAdmin():Boolean{
-  if (!this.userRole)
+  if (!this.roles)
   return false;
-  return this.userRole.indexOf('ROLE_ADMIN') >=0;
+  return this.roles.indexOf('ROLE_ADMIN') >=0;
   }
 
   isSuperAdmin():Boolean{
-    if (!this.userRole)
+    if (!this.roles)
     return false;
-    return this.userRole.indexOf('ROLE_SUPERADMIN') >=0;
+    return this.roles.indexOf('ROLE_SUPERADMIN') >=0;
     }
 
 setLoggedUserFromLocalStorage(login : string) {
   this.loggedUser = login;
   this.isloggedIn = true;
   //this.getUserRoles(login);
-  }
+  } 
 }
